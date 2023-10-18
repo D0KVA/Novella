@@ -25,83 +25,83 @@ if answer == 1:
     text = (f'Вы очнулись в {loca1}.\n')
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.1)
+        time.sleep(0.05)
     text = ('Вы поняли, что ваш разум затуманен.\n')
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.1)
+        time.sleep(0.05)
     text = (f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.1)
+        time.sleep(0.05)
     text = ("Вы возьмёте меч?\n")
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.1)
-    text = ("Введите 'да' или 'нет'. \n")
+        time.sleep(0.05)
+    text = ("Введите 1, если'да' или 2, если 'нет'. \n")
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.1)
-    a = input()
-    if a == "да" or "Да" or "ДА" or "дА":
+        time.sleep(0.05)
+    a = int(input())
+    if a == 1:
         text = ('Вы взяли меч, ведь вы считаете, что он вам пригодится.\n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Неожиданно, впереди вас появился {enemy1}.\n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Это существо вас заметило, вы решили, что можете дать отпор. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Вы еле как смогли его одолеть. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Но вдруг, впереди вы увидели длинный проход.\n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Пройдя в него, вы увидели, что это туннель, на стенах которого было написано: "Долой нежить", "Топчи нечестивую гадость", "Смерть нечестивым гадам". \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Пройдя  этот длинный туннель, вы пришли в {loca2}.\n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Вы сели у костра, чтобы восстановить силы. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'К вам подошла красивая дама, у неё на глазах была повязка. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Она промолвила вам: "Я поняла, что ты из негорящих, я Хранительница огня Мелина." \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'С этими словами, она вам протянула {items[2]}. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = (f'Выпив из фляги, вы почувствовали себя лучше. \n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = ('Вы увидели, что рядом с костром валяется щит.\n')
         for char in text:
             print(char, end='', flush=True)
-            time.sleep(0.1)
+            time.sleep(0.05)
         text = ('Вы возьмёте с собой щит?\n')
         for char in text:
             print(char, end='', flush=True)
             time.sleep(0.05)
-        z = input('Напишите "да" или "нет"')
-        if z == "да" or "Да" or "ДА" or "дА":
+        z = int(input('Напишите 1, если "да" или 2, если "нет"'))
+        if z == 1:
             text = ('Вы решили взять его с собой.\n')
             for char in text:
                 print(char, end='', flush=True)
@@ -198,15 +198,64 @@ if answer == 1:
             for char in text:
                 print(char, end='', flush=True)
                 time.sleep(0.05)
-            text = (f'ОТКРЫТАЯ КОНЦОВКА.\n')
+            text = (f"Вы очнулись возле костра, но он был не таким, как тот\n")
             for char in text:
                 print(char, end='', flush=True)
                 time.sleep(0.05)
-            text = (f'продолжение в следующей практической.\n')
+            text = (f"Подняв глаза, вы увидели, что перед вами находится скрюченный силуэт.\n")
             for char in text:
                 print(char, end='', flush=True)
                 time.sleep(0.05)
-        elif z == "нет" or "НЕТ" or "Нет" or "НеТ" or "нЕТ" or "НЕт":
+            text = (f"Он сказал вам: 'akflsalsdfadsfkl asdlfkdfsa'.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Вы не поняли, что он вам сказал, но вы заметили {items[1]}, который он протянул вам.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Вы взяли {items[1]}.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Пройдя дальше, вы увидели домик.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Подойдя к домику, вы попробовали открыть дверь, но вы поняли, что она заперта.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Вы решили использовать ключ, который идеально подошёл к данной двери.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Пройдя в дверь вы услышали резкий хлопок.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Это была дверь позади вас.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+                text = (f"Вы решили попробовать открыть дверь, но вы услышали, что после вашей попытки открылось нечто иное.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Это был проход в противоположной части дома, из которого вышли три {enemy2}.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"Вы хотели было убежать, но ваши попытки были тщетны.\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.05)
+            text = (f"ВЫ УМЕРЛИ\n")
+            for char in text:
+                print(char, end='', flush=True)
+                time.sleep(0.8)
+                Break
+        elif z == 2:
             text = ('Вы решили не брать его с собой.\n')
             for char in text:
                 print(char, end='', flush=True)
@@ -264,7 +313,7 @@ if answer == 1:
                 print(char, end='', flush=True)
                 time.sleep(0.05)
             Break
-    elif a == "нет":
+    elif a == 2:
         text = ('Вы не взяли меч, ведь вы считаете, что он вам не пригодится\n')
         for char in text:
             print(char, end='', flush=True)
@@ -281,7 +330,7 @@ if answer == 1:
         for char in text:
             print(char, end='', flush=True)
             time.sleep(0.05)
-        Break
+            Break
 elif answer == 2:
     print("Ладно")
     Break
