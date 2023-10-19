@@ -16,92 +16,139 @@ locations = {
 loca1 = locations["Пещера"]
 loca2 = locations["Центральная пещера"]
 loca3 = locations["Замок Лотрика"]
-print("Добро пожаловать в игру 'Негорящий'!")
-print("1. Начать игру")
-print("2. Выйти")
-answer = int(input())
-if answer == 1:
-    player_name = input("Введите ваше имя: ")
-    text = (f'Вы очнулись в {loca1}.\n')
+def smert1():
+    text = ('Вы не взяли меч, ведь вы считаете, что он вам не пригодится\n')
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.05)
-    text = ('Вы поняли, что ваш разум затуманен.\n')
+        text = (f'Неожиданно, впереди вас появился {enemy1}\n')
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.05)
-    text = (f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
+    text = (f'Это существо вас заметило, вы поняли, что надо было брать меч \n')
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.05)
-    text = ("Вы возьмёте меч?\n")
+    text = ("ВЫ УМЕРЛИ")
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.05)
-    text = ("Введите 1, если'да' или 2, если 'нет'. \n")
+        Break
+        
+def nesmert1():
+    text = ('Вы взяли меч, ведь вы считаете, что он вам пригодится.\n')
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.05)
-    a = int(input())
-    if a == 1:
-        text = ('Вы взяли меч, ведь вы считаете, что он вам пригодится.\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Неожиданно, впереди вас появился {enemy1}.\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Это существо вас заметило, вы решили, что можете дать отпор. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Вы еле как смогли его одолеть. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Но вдруг, впереди вы увидели длинный проход.\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Пройдя в него, вы увидели, что это туннель, на стенах которого было написано: "Долой нежить", "Топчи нечестивую гадость", "Смерть нечестивым гадам". \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Пройдя  этот длинный туннель, вы пришли в {loca2}.\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Вы сели у костра, чтобы восстановить силы. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'К вам подошла красивая дама, у неё на глазах была повязка. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Она промолвила вам: "Я поняла, что ты из негорящих, я Хранительница огня Мелина." \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'С этими словами, она вам протянула {items[2]}. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Выпив из фляги, вы почувствовали себя лучше. \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = ('Вы увидели, что рядом с костром валяется щит.\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = ('Вы возьмёте с собой щит?\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        z = int(input('Напишите 1, если "да" или 2, если "нет"'))
-        if z == 1:
+    text = (f'Неожиданно, впереди вас появился {enemy1}.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = (f'Это существо вас заметило, вы решили, что можете дать отпор. \n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = (f'Вы еле как смогли его одолеть. \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Но вдруг, впереди вы увидели длинный проход.\n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Пройдя в него, вы увидели, что это туннель, на стенах которого было написано: "Долой нежить", "Топчи нечестивую гадость", "Смерть нечестивым гадам". \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Пройдя  этот длинный туннель, вы пришли в {loca2}.\n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Вы сели у костра, чтобы восстановить силы. \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'К вам подошла красивая дама, у неё на глазах была повязка. \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Она промолвила вам: "Я поняла, что ты из негорящих, я Хранительница огня Мелина." \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'С этими словами, она вам протянула {items[2]}. \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = (f'Выпив из фляги, вы почувствовали себя лучше. \n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+    text = ('Вы увидели, что рядом с костром валяется щит.\n')
+    for char in text:
+       print(char, end='', flush=True)
+       time.sleep(0.05)
+       
+def smert2():
+    text = ('Вы решили не брать его с собой.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Далее вы направились к воротам, которые находились в другом конце центральной пещеры.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Но тут, на вашем пути появился странный силуэт, который решил начать с вами диалог.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('"Не иди туда, ты станешь смертником, если отправишься к замку Лотрика."\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Вы решили проигнорировать его и прошли мимо него\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('"Глупец" - сказал он вам в след.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Дойдя до огромных ворот, вы их открыли.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = (f'И вдруг, перед вами оказалось {loca3}.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Но резко, позади вас захлопнулись двери.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Этот шум привлёк одного из рыцарей.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = (f'Когда он к вам подошёл, вы поняли, что это {enemy2}.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Неожиданно он совершил удар, который разрубил вас пополам.\n')
+    for char in text:
+         print(char, end='', flush=True)
+         time.sleep(0.05)
+    text = ('Вас оковала сильнейшая боль, после чего вы умерли.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('ВЫ УМЕРЛИ.\n')
+    for char in text:
+         print(char, end='', flush=True)
+         time.sleep(0.05)
+    Break
+   
+def nesmert2():
             text = ('Вы решили взять его с собой.\n')
             for char in text:
                 print(char, end='', flush=True)
@@ -255,82 +302,50 @@ if answer == 1:
                 print(char, end='', flush=True)
                 time.sleep(0.8)
                 Break
+
+def num1():
+    text = (f'Вы очнулись в {loca1}.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ('Вы поняли, что ваш разум затуманен.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = (f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+  
+print("Добро пожаловать в игру 'Негорящий'!")
+print("1. Начать игру")
+print("2. Выйти")
+answer = int(input())
+if answer == 1:
+    player_name = input("Введите ваше имя: ")
+    num1()
+    text = ("Вы возьмёте меч?\n")
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    text = ("Введите 1, если'да' или 2, если 'нет'. \n")
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.05)
+    a = int(input())
+    if a == 1:
+        nesmert1()
+        text = ('Вы возьмёте с собой щит?\n')
+        for char in text:
+            print(char, end='', flush=True)
+            time.sleep(0.05)
+        z = int(input('Напишите 1, если "да" или 2, если "нет"'))
+        if z == 1:
+            nesmert2()
         elif z == 2:
-            text = ('Вы решили не брать его с собой.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Далее вы направились к воротам, которые находились в другом конце центральной пещеры.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Но тут, на вашем пути появился странный силуэт, который решил начать с вами диалог.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('"Не иди туда, ты станешь смертником, если отправишься к замку Лотрика."\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Вы решили проигнорировать его и прошли мимо него\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('"Глупец" - сказал он вам в след.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Дойдя до огромных ворот, вы их открыли.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = (f'И вдруг, перед вами оказалось {loca3}.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Но резко, позади вас захлопнулись двери.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Этот шум привлёк одного из рыцарей.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = (f'Когда он к вам подошёл, вы поняли, что это {enemy2}.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Неожиданно он совершил удар, который разрубил вас пополам.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('Вас оковала сильнейшая боль, после чего вы умерли.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            text = ('ВЫ УМЕРЛИ.\n')
-            for char in text:
-                print(char, end='', flush=True)
-                time.sleep(0.05)
-            Break
+            smert2()
     elif a == 2:
-        text = ('Вы не взяли меч, ведь вы считаете, что он вам не пригодится\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Неожиданно, впереди вас появился {enemy1}\n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = (f'Это существо вас заметило, вы поняли, что надо было брать меч \n')
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-        text = ("ВЫ УМЕРЛИ")
-        for char in text:
-            print(char, end='', flush=True)
-            time.sleep(0.05)
-            Break
+        smert1()
 elif answer == 2:
     print("Ладно")
     Break
