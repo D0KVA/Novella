@@ -1,5 +1,8 @@
 import time
 from _ast import Break
+import json
+import os
+import csv
 
 items = ["Меч палладина", "Ключ", "Фляга эстуса", "Щит"]
 enemy = {
@@ -17,24 +20,68 @@ loca1 = locations["Пещера"]
 loca2 = locations["Центральная пещера"]
 loca3 = locations["Замок Лотрика"]
 
+
 def textOutput(someText):
     text = (someText)
     for char in text:
         print(char, end='', flush=True)
-        time.sleep(0.05)
+        time.sleep(0.025)
 
+def hi(player_name):
+    print(f'Привет, {player_name}')
+
+def klass(kl):
+    print(f'Ваш класс: {kl}')
+
+def textOutput1(someText):
+    text = (someText)
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(0.5)
+
+def textOutput2(someText):
+    text = (someText)
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(1)
+
+def save_data_to_json(data, filename):
+    with open(filename, 'w') as file:
+        json.dump(data, file)
+        
+def load_data_from_json(filename):
+    try:
+        with open(filename, 'r') as file:
+            data = json.load(file)
+            return data
+    except FileNotFoundError:
+        return None
 print("Добро пожаловать в игру 'Негорящий'!")
 print("1. Начать игру")
 print("2. Выйти")
-answer = int(input())
+while True:
+    try:
+        text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
+        answer = int(input())  
+        break
+    except ValueError:
+        print("Пожалуйста, введите корректное число.\n")
 if answer == 1:
     player_name = input("Введите ваше имя: ")
+    hi(player_name)
+    kl = input("Введите ваш класс: ")
+    klass(kl)
     text = textOutput(f'Вы очнулись в {loca1}.\n')
     text = textOutput('Вы поняли, что ваш разум затуманен.\n')
     text = textOutput(f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
-    text = textOutput("Вы возьмёте меч?\n")  
-    text = ("Введите 1, если'да' или 2, если 'нет'. \n")
-    a = int(input())
+    text = textOutput("Вы возьмёте меч?\n")
+    while True:
+            try:
+                text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
+                a = int(input())  
+                break
+            except ValueError:
+                print("Пожалуйста, введите корректное число.\n")
     if a == 1:
         text = textOutput('Вы взяли меч, ведь вы считаете, что он вам пригодится.\n')
         text = textOutput(f'Неожиданно, впереди вас появился {enemy1}.\n')
@@ -50,8 +97,13 @@ if answer == 1:
         text = textOutput(f'Выпив из фляги, вы почувствовали себя лучше. \n')
         text = textOutput('Вы увидели, что рядом с костром валяется щит.\n')
         text = textOutput('Вы возьмёте с собой щит?\n')
-        text = textOutput('Напишите 1, если "да" или 2, если "нет"')
-        z = int(input())
+        while True:
+            try:
+                text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
+                z = int(input())  
+                break
+            except ValueError:
+                print("Пожалуйста, введите корректное число.\n")
         if z == 1:
             text = textOutput('Вы решили взять его с собой.\n')
             text = textOutput('Далее вы направились к воротам, которые находились в другом конце центральной пещеры.\n')
@@ -105,17 +157,111 @@ if answer == 1:
             print(f"|                   |\n")
             print(f"|                   |\n")
             print(f" ------------------- \n")
-            d = int(input())
+            while True:
+                try:
+                    d = int(input())  
+                    break
+                except ValueError:
+                    print("Пожалуйста, введите корректное число.")
             if d == 1:
                 text = textOutput(f"Вбежав в Деревянный проход, вы услышали, как за вами захлопнулась дверь.\n")
                 text = textOutput(f"Перед вами оказалась огромная гостинная.\n")
-                text = textOutput(f"Вы увидели .\n")
-                text = textOutput(f"2 - Каменный проход.\n")
-                text = textOutput(f"2 - Каменный проход.\n")
-                text = textOutput(f"2 - Каменный проход.\n")
-                text = textOutput(f"2 - Каменный проход.\n")
+                text = textOutput(f"Вы увидели чашку чая на столике.\n")
+                text = textOutput(f"Вы выпьете чай?\n")
+                while True:
+                    try:
+                        text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
+                        g = int(input())  
+                        break
+                    except ValueError:
+                        print("Пожалуйста, введите корректное число.\n")
+                if g == 1:
+                    text = textOutput(f"Вы решили попробовать чай.\n")
+                    text = textOutput(f"Но вдруг вас резко окутала огромная боль.\n")
+                    text = textOutput(f"Ваше лицо начало покрываться язвами, ваш язык начинает расплываться, а глазные яблоки впадают в орбиты.\n")
+                    text = textOutput(f"ВЫ УМЕРЛИ.\n")
+                    user_data = {
+                "Имя": player_name,
+                "Класс": kl,
+                    }
+                    save_data_to_json(user_data, f'{player_name}.json')
+                    Break
+                elif g == 2:
+                    text = textOutput(f"Вы решили не попробовать чай.\n")
+                    text = textOutput(f"Вы увидели, как из чая выползли тысячи, если не миллионы жуков.\n")
+                    text = textOutput(f"Они резко ринулись на вас.\n")
+                    text = textOutput(f"Единственный выход, который вы увидели - это камин, за дровами которого было что-то напоминающее выход.\n")
+                    text = textOutput(f"Влетев с двух ног в камин, вы выпрыгнули в какую-то пещеру\n")
+                    text = textOutput(f"Вы потеряли сознание\n")
+                    text = textOutput(f"Вы очнулись в {loca1}.\n")
+                    text = textOutput('Вы поняли, что ваш разум затуманен.\n')
+                    text = textOutput(f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
+                    text = textOutput(f'ВЫ ОТКРЫЛИ КОНЦОВКУ "День Сурка"\n')
+                    text = textOutput1(f'Поздравляю вас!\n')
+                    user_data = {
+                "Имя": player_name,
+                "Класс": kl,
+                    }
+                save_data_to_json(user_data, f'{player_name}.json')
+                Break
             elif d == 2:
+                text = textOutput(f"Вбежав в Каменный проход, вы услышали, как за вами покатился булыжник.\n")
+                text = textOutput(f"ВЫ РИНУЛИСЬ ВПЕРЁД, ТОЛЬКО ВПЕРЁД.\n")
+                text = textOutput(f"ЕДИНСТВЕННЫЕ МЫСЛИ, КОТОРЫЕ БЫЛИ В ВАШЕЙ ГОЛОВЕ: 'ОЙ БЛ****, Я ХОЧУ ЖИТЬ. ААААААААААААААААААААААААА'.\n")
+                text = textOutput(f"Вдруг, впереди вы уцвидели справа в стене проход.\n")
+                text = textOutput(f"Вы нырнули в этот проход, но там оказалась яма с шипами.\n")
+                text = textOutput(f"Вы открыли концовку 'Олух'.\n")
+                text = textOutput1(f"Поздравляю вас?\n")
+                user_data = {
+            "Имя": player_name,
+            "Класс": kl,
+                    }
+                save_data_to_json(user_data, f'{player_name}.json')
+                Break
             elif d == 3:
+                text = textOutput(f"Вбежав в Стену, вы прошли сквозь неё.\n")
+                text = textOutput(f"Вы оказались в тёмном помещении.\n")
+                text = textOutput(f"Вокруг вас стоял хохот.\n")
+                text = textOutput(f"Вдруг вас окружил огромная вспышка света.\n")
+                text = textOutput(f"С вами начал говорить источник света:'Здравствуй. Странник. Ты. Попал. К. Нам. Выбирай. Что. Ты. Будешь. Делать.'.\n")
+                text = textOutput(f"Мы. Даём. Тебе. Выбор.\n")
+                text = textOutput(f"1. Уйти, но пройти этот путь сначала\n")
+                text = textOutput(f"2. Остаться и умереть, познав мир\n")
+                while True:
+                    try:
+                        h = int(input())  
+                        break
+                    except ValueError:
+                        print("Пожалуйста, введите корректное число.\n")
+                if h == 1:
+                    text = textOutput(f"Мы пошутили, ты не уйдёшь после того, как сумел увидеть нас\n")
+                    text = textOutput(f"Вы открыли концовку 'Повёлся'.\n")
+                    text = textOutput(f"Поздравляю.\n")
+                    user_data = {
+                "Имя": player_name,
+                "Класс": kl,
+                    }
+                save_data_to_json(user_data, f'{player_name}.json')
+                Break
+                if h == 2:
+                    text = textOutput(f"Хорошо\n")
+                    text = textOutput(f"Узнай, и прими правду.\n")
+                    text = textOutput(f"Ты и есть причина беспорядков в мире.\n")
+                    text = textOutput(f"Ты уничтожил род Хранителей Огня.\n")
+                    text = textOutput(f"Ты создал свою империю.\n")
+                    text = textOutput(f"Но тебя предал твой же брат.\n")
+                    text = textOutput(f"Твой брат - Лотрик.\n")
+                    text = textOutput(f"Теперь ты можешь умереть счистой совестью\n")
+                    text = textOutput(f"Вы открыли концовку 'Просветление'\n")
+                    text = textOutput(f"Поздравляю.\n")
+                    user_data = {
+                "Имя": player_name,
+                "Класс": kl,
+                    }
+                    save_data_to_json(user_data, f'{player_name}.json')
+                    Break
+            save_data_to_json(user_data, f'{player_name}.json')
+            Break
         elif z == 2:
             text = textOutput('Вы решили не брать его с собой.\n')
             text = textOutput('Далее вы направились к воротам, которые находились в другом конце центральной пещеры.\n')
@@ -130,13 +276,23 @@ if answer == 1:
             text = textOutput(f'Когда он к вам подошёл, вы поняли, что это {enemy2}.\n')
             text = textOutput('Неожиданно он совершил удар, который разрубил вас пополам.\n')
             text = textOutput('Вас оковала сильнейшая боль, после чего вы умерли.\n')
-            text = textOutput('ВЫ УМЕРЛИ.\n')
-            Break
+            text = textOutput2('ВЫ УМЕРЛИ.\n')
+            user_data = {
+        "Имя": player_name,
+        "Класс": kl,
+                    }
+        save_data_to_json(user_data, f'{player_name}.json')
+        Break
     elif a == 2:
         text = textOutput('Вы не взяли меч, ведь вы считаете, что он вам не пригодится\n')
         text = textOutput(f'Неожиданно, впереди вас появился {enemy1}\n')
         text = textOutput(f'Это существо вас заметило, вы поняли, что надо было брать меч \n')
-        text = textOutput("ВЫ УМЕРЛИ")
+        text = textOutput2("ВЫ УМЕРЛИ\n")
+        user_data = {
+        "Имя": player_name,
+        "Класс": kl,
+                    }
+        save_data_to_json(user_data, f'{player_name}.json')
         Break
 elif answer == 2:
     print("Ладно")
