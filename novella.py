@@ -20,7 +20,6 @@ loca1 = locations["Пещера"]
 loca2 = locations["Центральная пещера"]
 loca3 = locations["Замок Лотрика"]
 
-
 def textOutput(someText):
     text = (someText)
     for char in text:
@@ -45,24 +44,31 @@ def textOutput2(someText):
         print(char, end='', flush=True)
         time.sleep(1)
 
-def save_data_to_json(data, filename):
-    with open(filename, 'w') as file:
-        json.dump(data, file)
-        
-def load_data_from_json(filename):
-    try:
-        with open(filename, 'r') as file:
-            data = json.load(file)
-            return data
-    except FileNotFoundError:
-        return None
+def create_save_csv():
+    with open('sw_data_new.csv', 'w') as f:
+        writer = csv.writer(f)
+        for row in ChelCsv:
+            writer.writerow(row)
+
+def read_save_csv():
+    with open('sw_data_new.csv') as f:
+        print(f.read())
+
+def create_save_json():
+    with open('sw_templates.json', 'w') as f:
+        f.write(json.dumps(ChelCsv))
+
+def read_save_json():
+    with open('sw_templates.json') as f:
+        print(f.read())
+
 print("Добро пожаловать в игру 'Негорящий'!")
 print("1. Начать игру")
 print("2. Выйти")
 while True:
     try:
         text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
-        answer = int(input())  
+        answer = int(input())
         break
     except ValueError:
         print("Пожалуйста, введите корректное число.\n")
@@ -76,12 +82,12 @@ if answer == 1:
     text = textOutput(f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
     text = textOutput("Вы возьмёте меч?\n")
     while True:
-            try:
-                text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
-                a = int(input())  
-                break
-            except ValueError:
-                print("Пожалуйста, введите корректное число.\n")
+        try:
+            text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
+            a = int(input())
+            break
+        except ValueError:
+            print("Пожалуйста, введите корректное число.\n")
     if a == 1:
         text = textOutput('Вы взяли меч, ведь вы считаете, что он вам пригодится.\n')
         text = textOutput(f'Неожиданно, впереди вас появился {enemy1}.\n')
@@ -100,7 +106,7 @@ if answer == 1:
         while True:
             try:
                 text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
-                z = int(input())  
+                z = int(input())
                 break
             except ValueError:
                 print("Пожалуйста, введите корректное число.\n")
@@ -159,7 +165,7 @@ if answer == 1:
             print(f" ------------------- \n")
             while True:
                 try:
-                    d = int(input())  
+                    d = int(input())
                     break
                 except ValueError:
                     print("Пожалуйста, введите корректное число.")
@@ -171,20 +177,24 @@ if answer == 1:
                 while True:
                     try:
                         text = textOutput('Напишите 1, если "да" или 2, если "нет"\n')
-                        g = int(input())  
+                        g = int(input())
                         break
                     except ValueError:
                         print("Пожалуйста, введите корректное число.\n")
                 if g == 1:
                     text = textOutput(f"Вы решили попробовать чай.\n")
                     text = textOutput(f"Но вдруг вас резко окутала огромная боль.\n")
-                    text = textOutput(f"Ваше лицо начало покрываться язвами, ваш язык начинает расплываться, а глазные яблоки впадают в орбиты.\n")
+                    text = textOutput(
+                        f"Ваше лицо начало покрываться язвами, ваш язык начинает расплываться, а глазные яблоки впадают в орбиты.\n")
                     text = textOutput(f"ВЫ УМЕРЛИ.\n")
-                    user_data = {
-                "Имя": player_name,
-                "Класс": kl,
+                    ChelCsv = {
+                        "Имя": player_name,
+                        "Класс": kl,
                     }
-                    save_data_to_json(user_data, f'{player_name}.json')
+                    create_save_json()
+                    read_save_json()
+                    create_save_csv()
+                    read_save_csv()
                     Break
                 elif g == 2:
                     text = textOutput(f"Вы решили не попробовать чай.\n")
@@ -198,25 +208,32 @@ if answer == 1:
                     text = textOutput(f'Встав с пятой точки, вы наткнулись ногами на {items[0]}.\n')
                     text = textOutput(f'ВЫ ОТКРЫЛИ КОНЦОВКУ "День Сурка"\n')
                     text = textOutput1(f'Поздравляю вас!\n')
-                    user_data = {
-                "Имя": player_name,
-                "Класс": kl,
+                    ChelCsv = {
+                        "Имя": player_name,
+                        "Класс": kl,
                     }
-                save_data_to_json(user_data, f'{player_name}.json')
+                    create_save_json()
+                    read_save_json()
+                    create_save_csv()
+                    read_save_csv()
                 Break
             elif d == 2:
                 text = textOutput(f"Вбежав в Каменный проход, вы услышали, как за вами покатился булыжник.\n")
                 text = textOutput(f"ВЫ РИНУЛИСЬ ВПЕРЁД, ТОЛЬКО ВПЕРЁД.\n")
-                text = textOutput(f"ЕДИНСТВЕННЫЕ МЫСЛИ, КОТОРЫЕ БЫЛИ В ВАШЕЙ ГОЛОВЕ: 'ОЙ БЛ****, Я ХОЧУ ЖИТЬ. ААААААААААААААААААААААААА'.\n")
+                text = textOutput(
+                    f"ЕДИНСТВЕННЫЕ МЫСЛИ, КОТОРЫЕ БЫЛИ В ВАШЕЙ ГОЛОВЕ: 'ОЙ БЛ****, Я ХОЧУ ЖИТЬ. ААААААААААААААААААААААААА'.\n")
                 text = textOutput(f"Вдруг, впереди вы уцвидели справа в стене проход.\n")
                 text = textOutput(f"Вы нырнули в этот проход, но там оказалась яма с шипами.\n")
                 text = textOutput(f"Вы открыли концовку 'Олух'.\n")
                 text = textOutput1(f"Поздравляю вас?\n")
-                user_data = {
-            "Имя": player_name,
-            "Класс": kl,
-                    }
-                save_data_to_json(user_data, f'{player_name}.json')
+                ChelCsv = {
+                    "Имя": player_name,
+                    "Класс": kl,
+                }
+                create_save_json()
+                read_save_json()
+                create_save_csv()
+                read_save_csv()
                 Break
             elif d == 3:
                 text = textOutput(f"Вбежав в Стену, вы прошли сквозь неё.\n")
@@ -229,7 +246,7 @@ if answer == 1:
                 text = textOutput(f"2. Остаться и умереть, познав мир\n")
                 while True:
                     try:
-                        h = int(input())  
+                        h = int(input())
                         break
                     except ValueError:
                         print("Пожалуйста, введите корректное число.\n")
@@ -237,11 +254,14 @@ if answer == 1:
                     text = textOutput(f"Мы пошутили, ты не уйдёшь после того, как сумел увидеть нас\n")
                     text = textOutput(f"Вы открыли концовку 'Повёлся'.\n")
                     text = textOutput(f"Поздравляю.\n")
-                    user_data = {
-                "Имя": player_name,
-                "Класс": kl,
+                    ChelCsv = {
+                        "Имя": player_name,
+                        "Класс": kl,
                     }
-                save_data_to_json(user_data, f'{player_name}.json')
+                    create_save_json()
+                    read_save_json()
+                    create_save_csv()
+                    read_save_csv()
                 Break
                 if h == 2:
                     text = textOutput(f"Хорошо\n")
@@ -254,13 +274,15 @@ if answer == 1:
                     text = textOutput(f"Теперь ты можешь умереть счистой совестью\n")
                     text = textOutput(f"Вы открыли концовку 'Просветление'\n")
                     text = textOutput(f"Поздравляю.\n")
-                    user_data = {
-                "Имя": player_name,
-                "Класс": kl,
+                    ChelCsv = {
+                        "Имя": player_name,
+                        "Класс": kl,
                     }
-                    save_data_to_json(user_data, f'{player_name}.json')
+                    create_save_json()
+                    read_save_json()
+                    create_save_csv()
+                    read_save_csv()
                     Break
-            save_data_to_json(user_data, f'{player_name}.json')
             Break
         elif z == 2:
             text = textOutput('Вы решили не брать его с собой.\n')
@@ -277,22 +299,28 @@ if answer == 1:
             text = textOutput('Неожиданно он совершил удар, который разрубил вас пополам.\n')
             text = textOutput('Вас оковала сильнейшая боль, после чего вы умерли.\n')
             text = textOutput2('ВЫ УМЕРЛИ.\n')
-            user_data = {
-        "Имя": player_name,
-        "Класс": kl,
-                    }
-        save_data_to_json(user_data, f'{player_name}.json')
+            ChelCsv = {
+                "Имя": player_name,
+                "Класс": kl,
+            }
+            create_save_json()
+            read_save_json()
+            create_save_csv()
+            read_save_csv()
         Break
     elif a == 2:
         text = textOutput('Вы не взяли меч, ведь вы считаете, что он вам не пригодится\n')
         text = textOutput(f'Неожиданно, впереди вас появился {enemy1}\n')
         text = textOutput(f'Это существо вас заметило, вы поняли, что надо было брать меч \n')
         text = textOutput2("ВЫ УМЕРЛИ\n")
-        user_data = {
-        "Имя": player_name,
-        "Класс": kl,
-                    }
-        save_data_to_json(user_data, f'{player_name}.json')
+        ChelCsv = {
+            "Имя": player_name,
+            "Класс": kl,
+        }
+        create_save_json()
+        read_save_json()
+        create_save_csv()
+        read_save_csv()
         Break
 elif answer == 2:
     print("Ладно")
